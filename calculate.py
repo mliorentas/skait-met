@@ -11,7 +11,7 @@ def DerivativeN(number):
 limit = 1000
 
 def NewtonMethod(startingPoint, precision):
-    getcontext().prec = precision
+    digitsAfterPoint = precision
     precision = 10**(-1 * precision)
 
     nextNumber = startingPoint
@@ -21,12 +21,12 @@ def NewtonMethod(startingPoint, precision):
             print ("Too much operations")
             return
         nextNumber = nextNumber - FunctionN(nextNumber)/DerivativeN(nextNumber)
-        print ("{0}         | {1} | {2}".format(iteration, nextNumber, FunctionN(nextNumber)))
+        print ("{0}         | {1} | {2}".format(iteration, round(nextNumber,digitsAfterPoint), FunctionN(nextNumber)))
         iteration += 1
-    print ("Found. {0}".format(nextNumber))
+    print ("Found. {0}".format(round(nextNumber,digitsAfterPoint)))
 
 def FixedPointIterationMethod(startingPoint, precision):
-    getcontext().prec = precision
+    digitsAfterPoint = precision
     precision = 10**(-1 * precision)
 
     previousNumber = startingPoint
@@ -38,9 +38,9 @@ def FixedPointIterationMethod(startingPoint, precision):
             return
         previousNumber = nextNumber
         nextNumber = FunctionF(previousNumber)
-        print ("{0}         | {1} | {2}".format(iteration, nextNumber, previousNumber - nextNumber))
+        print ("{0}         | {1} | {2}".format(iteration, round(nextNumber,digitsAfterPoint), previousNumber - nextNumber))
         iteration += 1
-    print ("Found. {0}".format(nextNumber))
+    print ("Found. {0}".format(round(nextNumber,digitsAfterPoint)))
 
 def Main():
     print ("Program to calculate e^(-3x) - x = 0 ")
