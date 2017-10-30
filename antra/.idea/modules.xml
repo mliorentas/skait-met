@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/antra.iml" filepath="$PROJECT_DIR$/antra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/splainas.iml" filepath="$PROJECT_DIR$/splainas.iml" />
     </modules>
   </component>
 </project>

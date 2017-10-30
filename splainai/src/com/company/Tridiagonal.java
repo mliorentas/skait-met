@@ -1,3 +1,5 @@
+package com.company;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -7,40 +9,38 @@ import java.util.*;
 /**
  * Created by Matas on 2017-10-29.
  */
-public class Program {
-    static List<Double> matrixColumn1 = new ArrayList<>();
-    static List<Double> matrixColumn2 = new ArrayList<>();
-    static List<Double> matrixColumn3 = new ArrayList<>();
+public class Tridiagonal {
+    List<Double> matrixColumn1 = new ArrayList<>();
+    List<Double> matrixColumn2 = new ArrayList<>();
+    List<Double> matrixColumn3 = new ArrayList<>();
 
-    static List<Double> matrixValues = new ArrayList<>();
+    List<Double> matrixValues = new ArrayList<>();
 
-    static List<Double> solverC = new ArrayList<>();
-    static List<Double> solverD = new ArrayList<>();
+    List<Double> solverC = new ArrayList<>();
+    List<Double> solverD = new ArrayList<>();
 
-    static Map<Integer, Double> solutions = new HashMap<>();
-    static Integer lastIndex;
+    Map<Integer, Double> solutions = new HashMap<>();
+    Integer lastIndex;
 
-    public static void main(String [] args) {
-        readFile("C:\\Users\\Matas\\Desktop\\5 Semestras\\skait-met\\antra\\out\\production\\antra\\matrix.txt");
+    public void calc(String path ) {
+        readFile(path);
         calculateForward();
         System.out.println("c" + solverC.toString());
         System.out.println("d" + solverD.toString());
-
-
         calculateBackward();
         for (int iterator = 0; iterator <= lastIndex; iterator++) {
             System.out.println(solutions.get(iterator).toString());
         }
     }
 
-    private static void calculateBackward() {
+    private void calculateBackward() {
         solutions.put(lastIndex, solverD.get(lastIndex));
         for (int iterator = lastIndex - 1; iterator >= 0; iterator--) {
             solutions.put(iterator, solverD.get(iterator) + solverC.get(iterator) * solutions.get(iterator + 1));
         }
     }
 
-    private static void calculateForward () {
+    private void calculateForward () {
         solverC.add(-1 * (matrixColumn3.get(0) / matrixColumn2.get(0)));
         solverD.add(matrixValues.get(0) / matrixColumn2.get(0));
 
@@ -54,7 +54,7 @@ public class Program {
         solverD.add((matrixValues.get(last) - matrixColumn1.get(last) * solverD.get(last-1)) / division);
     }
 
-    private static void readFile(String fileName)
+    private void readFile(String fileName)
     {
         // This will reference one line at a time
         String line = null;
