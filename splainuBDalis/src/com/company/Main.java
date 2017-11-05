@@ -10,49 +10,18 @@ public class Main {
     static List<Double> yList = new ArrayList<>();
 
     public static void main(String[] args) {
-//       Example test
-//        yList.add(0d);
-//        yList.add(0.5d);
-//        yList.add(2d);
-//        yList.add(1.5d);
-//        xList.add(0d);
-//        xList.add(1d);
-//        xList.add(2d);
-//        xList.add(3d);
-//       Example test 2
-//        xList.add(0d);
-//        xList.add(2d);
-//        xList.add(5d);
-//        xList.add(6d);
-//        yList.add(4d);
-//        yList.add(-2d);
-//        yList.add(19d);
-//        yList.add(58d);
-        // my function
-
-        xList.add(-5d);
-        xList.add(-4.2d);
-        xList.add(-3.4d);
-        xList.add(-2.6d);
-        xList.add(-1.8d);
-        xList.add(-1d);
-        xList.add(-0.2d);
-        xList.add(0.6d);
-        xList.add(1.4d);
-        xList.add(2.2d);
+        xList.add(0d);
+        xList.add(1d);
+        xList.add(2d);
         xList.add(3d);
-        yList.add(12.136135893187507);
-        yList.add(-4.003553168543124);
-        yList.add(-5.292202444596911);
-        yList.add(-3.1441790472570865);
-        yList.add(-0.5588269789684929);
-        yList.add(0.8908079042931287);
-        yList.add(1.0831410796080632);
-        yList.add(0.6114236617026394);
-        yList.add(0.08440318529167412);
-        yList.add(-0.19589500465831755);
-        yList.add(-0.2208971843122);
-
+        xList.add(4d);
+        xList.add(5d);
+        yList.add(0d);
+        yList.add(0d);
+        yList.add(0d);
+        yList.add(209d);
+        yList.add(0d);
+        yList.add(209d);
 
         System.out.println("\nInput values.");
         System.out.println("x values: " + xList.toString());
@@ -113,12 +82,9 @@ public class Main {
         }
 
         // Calculate x
-        Double xValue = 0d;
-        Integer intervalNumber = 6;
+        Double xValue = 2.2d;
+        Integer intervalNumber = 2;
         Double approx = HList.get(intervalNumber)*Math.pow(xValue - xList.get(intervalNumber), 3)+ GList.get(intervalNumber)*Math.pow(xValue - xList.get(intervalNumber), 2) + eList.get(intervalNumber)*(xValue-xList.get(intervalNumber)) + yList.get(intervalNumber);
-        System.out.println(" x = "+ xValue.toString() + " is " + approx.toString());
-        System.out.println(" real value is " + Math.exp(-0.5*xValue)*Math.cos(xValue));
-
-
+        System.out.println("\n x = "+ xValue.toString() + " is " + approx.toString());
     }
 }
