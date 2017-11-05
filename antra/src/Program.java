@@ -18,21 +18,44 @@ public class Program {
     static List<Double> solverD = new ArrayList<>();
 
     static Map<Integer, Double> solutions = new HashMap<>();
+    static List<Double> solutionList =new ArrayList<>();
+
     static Integer lastIndex;
 
-    public static void main(String [] args) {
-        readFile("C:\\Users\\Matas\\Desktop\\5 Semestras\\skait-met\\antra\\out\\production\\antra\\matrix.txt");
+    public static void main(String[] arg) {
+        readFile("C:\\Users\\Matas\\Desktop\\5 semestras\\skait-met\\skait-met\\antra\\out\\production\\antra\\matrix.txt");
         calculateForward();
         System.out.println("c" + solverC.toString());
         System.out.println("d" + solverD.toString());
-
-
         calculateBackward();
         for (int iterator = 0; iterator <= lastIndex; iterator++) {
-            System.out.println(solutions.get(iterator).toString());
+            solutionList.add(solutions.get(iterator));
         }
+        System.out.println("g" + solutionList.toString());
     }
+    public static List<Double> calc(List <Double> matrixColumn1, List<Double> matrixColumn2, List<Double> matrixColumn3, List<Double> matrixValues ) {
+        System.out.println("\nTridiagonal calculator values.");
 
+        matrixColumn1 = matrixColumn1;
+        matrixColumn2 = matrixColumn2;
+        matrixColumn3 = matrixColumn3;
+        matrixValues = matrixValues;
+        lastIndex = new Integer(matrixColumn1.size() - 1);
+        System.out.println(matrixColumn1.toString());
+        System.out.println(matrixColumn2.toString());
+        System.out.println(matrixColumn3.toString());
+        System.out.println(matrixValues.toString());
+
+        calculateForward();
+        System.out.println("c" + solverC.toString());
+        System.out.println("d" + solverD.toString());
+        calculateBackward();
+        for (int iterator = 0; iterator <= lastIndex; iterator++) {
+            solutionList.add(solutions.get(iterator));
+        }
+        System.out.println("g" + solutionList.toString());
+        return solutionList;
+    }
     private static void calculateBackward() {
         solutions.put(lastIndex, solverD.get(lastIndex));
         for (int iterator = lastIndex - 1; iterator >= 0; iterator--) {
@@ -92,7 +115,6 @@ public class Program {
             // Or we could just do this:
             // ex.printStackTrace();
         }
-
 
     }
 
